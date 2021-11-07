@@ -12,10 +12,10 @@ namespace Korpokkur_discord_bot.Modules
     
     public class Commands : ModuleBase<SocketCommandContext>
     {
-        public static int cooldownSlime = 0;
-        public static int cooldownQG = 0;
-        public static int cooldownTA = 0;
-        public static int cooldownMino = 0;
+        public static long cooldownSlime = 0;
+        public static long cooldownQG = 0;
+        public static long cooldownTA = 0;
+        public static long cooldownMino = 0;
 
         [Command("korpokkur kid")]
         public async Task KorpokkurKid()
@@ -26,131 +26,67 @@ namespace Korpokkur_discord_bot.Modules
         [Command("Slime Guide")]
         public async Task SlimeDiagrams()
         {
-            int currentSlime = DateTime.Now.Minute;
-
-            if (cooldownSlime == 0)
+            if (cooldownSlime < DateTimeOffset.Now.ToUnixTimeSeconds() - 300)
             {
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818599989495857152/825732445949263903/slime-stand-here.png");
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818599989495857152/825577032741290014/slime-no-perception-plan.png");
-                cooldownSlime = currentSlime;
+                cooldownSlime = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
-            else if (currentSlime - cooldownSlime < 5)
-            {
-                if (currentSlime + cooldownSlime > 62)
-                {
-                    await ReplyAsync("https://cdn.discordapp.com/attachments/818599989495857152/825732445949263903/slime-stand-here.png");
-                    await ReplyAsync("https://cdn.discordapp.com/attachments/818599989495857152/825577032741290014/slime-no-perception-plan.png");
-                    cooldownSlime = currentSlime;
-                }
-                else
-                {
-                    await ReplyAsync("You can only run this command every 5 mins");
-                }
-            }
-
             else
             {
-                await ReplyAsync("https://cdn.discordapp.com/attachments/818599989495857152/825732445949263903/slime-stand-here.png");
-                await ReplyAsync("https://cdn.discordapp.com/attachments/818599989495857152/825577032741290014/slime-no-perception-plan.png");
-                cooldownSlime = currentSlime;
+                await ReplyAsync("You can only run this command every 5 mins");
             }
         }
 
-        [Command("Queen Guard Reflect")]
+        [Command("QG Guide")]
         public async Task QueenGuardReflect()
         {
-            int currentQG = DateTime.Now.Minute;
-
-            if (cooldownQG == 0)
+            if (cooldownQG < DateTimeOffset.Now.ToUnixTimeSeconds() - 300)
             {
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818600116734394378/818605438555521044/image0.png");
-                cooldownQG = currentQG;
-            }
-            else if (currentQG - cooldownQG < 5)
-            {
-                if (currentQG + cooldownQG > 62)
-                {
-                    await ReplyAsync("https://cdn.discordapp.com/attachments/818600116734394378/818605438555521044/image0.png");
-                    cooldownQG = currentQG;
-                }
-                else
-                {
-                    await ReplyAsync("You can only run this command every 5 mins");
-                }
+                cooldownQG = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
             else
             {
-                await ReplyAsync("https://cdn.discordapp.com/attachments/818600116734394378/818605438555521044/image0.png");
-                cooldownQG = currentQG;
+                await ReplyAsync("You can only run this command every 5 mins");
             }
+
         }
 
         [Command("TA Guide")]
         public async Task TADiagrams()
         {
-            int currentTA = DateTime.Now.Minute;
-
-            if (cooldownTA == 0)
+            if (cooldownTA < DateTimeOffset.Now.ToUnixTimeSeconds() - 300)
             {
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818600152834113556/818604710088802354/ladder.png");
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818600152834113556/825163815694893066/unknown.png");
-                cooldownTA = currentTA;
-            }
-            else if (currentTA - cooldownTA < 5)
-            {
-                if (currentTA + cooldownTA > 62)
-                {
-                    await ReplyAsync("https://cdn.discordapp.com/attachments/818600152834113556/818604710088802354/ladder.png");
-                    await ReplyAsync("https://cdn.discordapp.com/attachments/818600152834113556/825163815694893066/unknown.png");
-                    cooldownTA = currentTA;
-                }
-                else
-                {
-                    await ReplyAsync("You can only run this command every 5 mins");
-                }
+                cooldownTA = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
             else
             {
-                await ReplyAsync("https://cdn.discordapp.com/attachments/818600152834113556/818604710088802354/ladder.png");
-                await ReplyAsync("https://cdn.discordapp.com/attachments/818600152834113556/825163815694893066/unknown.png");
-                cooldownTA = currentTA;
+                await ReplyAsync("You can only run this command every 5 mins");
             }
+
         }
 
         [Command("Mino Guide")]
         public async Task MinotaurDiagrams()
         {
-            int currentMino = DateTime.Now.Minute;
-
-            if (cooldownMino == 0)
+            if (cooldownMino < DateTimeOffset.Now.ToUnixTimeSeconds() - 300)
             {
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818600166558924842/825940534132342794/Untitled.png");
-                cooldownMino = currentMino;
-            }
-            else if (currentMino - cooldownMino < 5)
-            {
-                if (currentMino + cooldownMino > 62)
-                {
-                    await ReplyAsync("https://cdn.discordapp.com/attachments/818600166558924842/825940534132342794/Untitled.png");
-                    cooldownMino = currentMino;
-                }
-                else
-                {
-                    await ReplyAsync("You can only run this command every 5 mins");
-                }
+                cooldownMino = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
             else
             {
-                await ReplyAsync("https://cdn.discordapp.com/attachments/818600166558924842/825940534132342794/Untitled.png");
-                cooldownMino = currentMino;
+                await ReplyAsync("You can only run this command every 5 mins");
             }
         }
 
-        [Command("!help")]
+        [Command("help")]
         public async Task HelpInfo()
         {
-            await ReplyAsync("```Avaliable Commands\nSlime Guide\nQueen Guard Reflect\nTA Guide\nMino Guide```");
+            await ReplyAsync("```Avaliable Commands\nSlime\nQG\nTA\nMino```");
         }
-
     }
 }
