@@ -18,8 +18,8 @@ namespace Korpokkur_discord_bot
         private DiscordSocketClient _client;
         private CommandService _commands;
         private IServiceProvider _services;
-        string secret = System.IO.File.ReadAllText(@"C:\Users\User\Documents\Token\token.txt");
 
+        string secret = System.IO.File.ReadAllText(@"C:\Users\User\Documents\Token\token.txt");
         public async Task RunBotAsync()
         {
             _client = new DiscordSocketClient();
@@ -32,7 +32,6 @@ namespace Korpokkur_discord_bot
 
             string token = secret;
 
-
             _client.Log += _client_Log;
 
             await RegisterCommandsAsync();
@@ -42,6 +41,7 @@ namespace Korpokkur_discord_bot
             await _client.StartAsync();
 
             await Task.Delay(-1);
+
         }
 
         private Task _client_Log(LogMessage arg)
