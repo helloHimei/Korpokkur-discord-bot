@@ -32,10 +32,6 @@ namespace Korpokkur_discord_bot.Modules
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818599989495857152/825577032741290014/slime-no-perception-plan.png");
                 cooldownSlime = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
-            else
-            {
-                await ReplyAsync("You can only run this command every 5 mins");
-            }
         }
 
         [Command("QG Guide")]
@@ -46,11 +42,6 @@ namespace Korpokkur_discord_bot.Modules
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818600116734394378/818605438555521044/image0.png");
                 cooldownQG = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
-            else
-            {
-                await ReplyAsync("You can only run this command every 5 mins");
-            }
-
         }
 
         [Command("TA Guide")]
@@ -62,11 +53,6 @@ namespace Korpokkur_discord_bot.Modules
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818600152834113556/825163815694893066/unknown.png");
                 cooldownTA = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
-            else
-            {
-                await ReplyAsync("You can only run this command every 5 mins");
-            }
-
         }
 
         [Command("Mino Guide")]
@@ -77,16 +63,12 @@ namespace Korpokkur_discord_bot.Modules
                 await ReplyAsync("https://cdn.discordapp.com/attachments/818600166558924842/825940534132342794/Untitled.png");
                 cooldownMino = DateTimeOffset.Now.ToUnixTimeSeconds();
             }
-            else
-            {
-                await ReplyAsync("You can only run this command every 5 mins");
-            }
         }
 
-        [Command("help")]
+        [Command("korpokkur help")]
         public async Task HelpInfo()
         {
-            await ReplyAsync("```Avaliable Commands\nSlime\nQG\nTA\nMino```");
+            await ReplyAsync("```Avaliable Commands\nSlime Guide\nQG Guide\nTA Guide\nMino Guide```");
         }
     }
 }
